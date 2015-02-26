@@ -75,10 +75,14 @@ public class MainActivity extends Activity {
 	protected void onResume() {
 		super.onResume();
 		
+//		movieManager.searchMovies(movies.getSearchUrl(),movies.getResourceUrl());
+		search(movieList);
+		
+		movieList.setAdapter(moviesViewAdapter);
+		
 		
 
-		// Refresh the list when visible
-		// TODO: Search all
+		
 		
 	}
 	
@@ -104,8 +108,10 @@ public class MainActivity extends Activity {
 		movies.clear();
 
 		// TODO: Extract search query from text view
-		
+		view = (ListView) findViewById(R.id.movieList);		
 		// TODO: Run the search thread
+		
+		
 		
 	}
 	
@@ -132,7 +138,24 @@ public class MainActivity extends Activity {
 
 	class SearchThread extends Thread {
 		// TODO: Implement search thread
+		private String searchString;
+		private String field;
 		
+		
+		public SearchThread(String searchString, String field){
+			this.field = field;
+			this.searchString = searchString;
+		
+		}
+		
+		@Override
+		public void run() {
+			
+			
+			movieManager.searchMovies(searchString, field);
+
+		
+		}
 	}
 
 	

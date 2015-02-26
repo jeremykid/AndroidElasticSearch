@@ -25,7 +25,9 @@ import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 
 public class ESMovieManager {
-
+	
+	
+	
 	private static final String TAG = "MovieSearch";
 	private Gson gson;
 	private Movies movies = new Movies();
